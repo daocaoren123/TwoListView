@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="action_bar_back">#48A1DD</color>
+    <color name="action_bar_back_select">#197EC2</color>
+    <color name="tab_title_normal">#B3B2B2</color>
+    <color name="tab_title_select">#4AA1DB</color>
+    <color name="tab_indicator">#daab3c</color>
+    <color name="action_set_bg">#CDC9C9</color>
+    <color name="white">#ffffff</color>
+    <color name="ll_coachback">#EFEFEF</color>
+    <color name="text">#37454F</color>
+    <color name="text_green">#88c057</color>
+    <color name="text_deep">#36444E</color>
+    <color name="text_bule">#4BA0DC</color>
+    <color name="text_light">#99A7AF</color>
+    <color name="text_red">#EC5C4A</color>
+</resources>
