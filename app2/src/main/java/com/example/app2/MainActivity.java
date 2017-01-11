@@ -111,7 +111,7 @@ public class MainActivity extends Activity {
 				menuAdapter.notifyDataSetInvalidated();
 				lv_home.setSelection(showTitle.get(arg2));
 								
-				tv_title.setText(data[arg2]);
+				//tv_title.setText(data[arg2]);
 				
 			}
 		});
@@ -139,7 +139,7 @@ public class MainActivity extends Activity {
 //				lv_home.setSelection(current);
 				if(currentItem != current && current >=0){
 					currentItem = current;
-					tv_title.setText(data[current]);
+					//tv_title.setText(data[current]);
 					menuAdapter.setSelectItem(currentItem);
 					menuAdapter.notifyDataSetInvalidated();
 				}

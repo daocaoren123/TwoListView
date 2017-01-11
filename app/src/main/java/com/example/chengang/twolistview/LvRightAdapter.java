@@ -44,11 +44,12 @@ public class LvRightAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
             //最外层
-       // initView(position, parent);
-        return layout;
+        View view = initView(position, parent);
+        convertView=view;
+        return convertView;
     }
 
-    private void initView(int position, ViewGroup parent) {
+    private View initView(int position, ViewGroup parent) {
         layout = new LinearLayout(parent.getContext());
         ViewGroup.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layout.setOrientation(LinearLayout.VERTICAL);
@@ -66,6 +67,7 @@ public class LvRightAdapter extends BaseAdapter {
         //添加到布局
         layout.addView(textView, params1_tv);
         layout.addView(recyclerView, params1);
+        return layout;
     }
 
 

@@ -2,20 +2,14 @@ package com.example.chengang.twolistview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -34,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     LvRightAdapter rightAdapter;
     private List<DataBeans.DataBean.CategoriesBean> datas;
 
+    private int currentItem;
+    List<Integer> ints = new ArrayList<Integer>();
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,40 +48,39 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //选中时改变颜色
                 adapter.setSelectItem(position);
-
                 //lv_right.smoothScrollToPosition(position);
                 //定位到position位置
                 lv_right.setSelection(position);
+                Log.e("aaaa", "position: " + position);
+
             }
         });
 
-
-        lv_right.setOnScrollListener(new AbsListView.OnScrollListener() {
-            int scrollState;
-
+        lv_right.setOnScrollListener(new OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-                this.scrollState = scrollState;
+
             }
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
+                lv_left.setSelection(firstVisibleItem);
+
+                if (count == firstVisibleItem) {
                     return;
                 }
+                count = firstVisibleItem;
+                adapter.setSelectItem(firstVisibleItem);
+                adapter.notifyDataSetChanged();
 
 
-                    adapter.setSelectItem(firstVisibleItem);
-                    adapter.notifyDataSetChanged();
-
-                Log.e("aaaa", "firstVisibleItem: " + firstVisibleItem);
-                Log.e("aaaa", "visibleItemCount: " + firstVisibleItem);
-                Log.e("aaaa", "totalItemCount: " + totalItemCount);
             }
         });
+
     }
 
-    private int currentItem;
+    int count;
+
 
     private void initDatas() {
         Call<DataBeans> call = myServers.getDatas("http://api.liwushuo.com/v2/item_categories/tree");
