@@ -27,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private LvLeftAdapter adapter;
     LvRightAdapter rightAdapter;
     private List<DataBeans.DataBean.CategoriesBean> datas;
-
-    private int currentItem;
+    int count;
     List<Integer> ints = new ArrayList<Integer>();
 
     @Override
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    int count;
+
 
 
     private void initDatas() {
